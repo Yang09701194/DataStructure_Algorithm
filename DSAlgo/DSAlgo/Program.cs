@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DSAlgo.DS;
 using Newtonsoft;
 using Newtonsoft.Json;
 
@@ -11,7 +12,10 @@ namespace DSAlgo
 		static void Main(string[] args)
 		{
 			
-			StackTest.Test();
+			//TestStack.Test();
+
+			MyStack.main();
+
 		}
 	}
 }
