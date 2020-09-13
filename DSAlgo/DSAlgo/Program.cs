@@ -11,7 +11,7 @@ namespace DSAlgo
 		static void Main(string[] args)
 		{
 			
-
+			StackTest.Test();
 		}
 	}
 }
