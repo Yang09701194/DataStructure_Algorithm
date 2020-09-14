@@ -28,7 +28,7 @@ namespace DSAlgo
 			Console.WriteLine(stack.Peek());
 
 			int[] arr = new[] { 1, 2, 3, 4};
-			Stack<int> stack2 = new Stack<int>();
+			Stack<int> stack2 = new Stack<int>(arr);
 
 			Console.WriteLine(stack.Contains(3));
 

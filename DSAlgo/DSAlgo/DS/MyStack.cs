@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DSAlgo.DS
 {
+	/// <summary>
+	/// https://www.tutorialspoint.com/cplusplus-program-to-implement-stack-using-array
+	/// </summary>
 	class MyStack
 	{
 		int[] stack = new int[100];
@@ -12,7 +15,7 @@ namespace DSAlgo.DS
 		public void push(int val)
 		{
 			if (top >= n - 1)
-				throw new Exception("Stack Overflow");
+				Console.WriteLine("Stack Overflow");
 			else
 			{
 				top++;
@@ -23,7 +26,7 @@ namespace DSAlgo.DS
 		public void pop()
 		{
 			if (top <= -1)
-				throw new Exception("Stack Underflow");
+				Console.WriteLine("Stack Underflow");
 			else
 			{
 				top--;

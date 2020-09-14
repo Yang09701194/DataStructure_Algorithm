@@ -14,7 +14,9 @@ namespace DSAlgo
 			
 			//TestStack.Test();
 
-			MyStack.main();
+			//MyStack.main();
+
+			MyQueue.main();
 
 		}
 	}
