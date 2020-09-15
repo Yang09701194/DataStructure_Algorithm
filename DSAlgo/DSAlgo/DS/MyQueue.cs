@@ -9,7 +9,103 @@ namespace DSAlgo.DS
 	//http://alrightchiu.github.io/SecondRound/queue-yi-arrayshi-zuo-queue.html
 	class MySequentialQueue
 	{
+		int capacity, front, back;
+		int[] queue;
 
+
+		public MySequentialQueue()
+		{
+			capacity = 5;
+			front = -1;
+			back = -1;
+			queue = new int[capacity];
+		}
+
+
+		public void DoubleCapacity()
+		{
+			capacity *= 2;
+			int[] newQueue = new int[capacity];
+			int j = - 1;
+			for (int i = front + 1; i <= back; i++, j++)
+			{
+				newQueue[j] = queue[i];
+			}
+
+			front = -1; back = j;
+		}
+
+
+		public void printCircularQueue()
+		{
+			Console.WriteLine($"front:{GetFront()} back:{GetBack()} capacity:{GetCapacity()} ");
+
+
+
+		}
+
+		public void Push(int i)
+		{
+			if (IsFull())
+				DoubleCapacity();
+			queue[++back] = i;
+		}
+
+		public void pop()
+		{
+			if (IsEmpty())
+			{
+				Console.WriteLine("Queue is Empty.\r\n");
+				return;
+			}
+
+			front++;
+		}
+
+
+		public int GetBack()
+		{
+			if (IsEmpty())
+			{
+				Console.WriteLine("Queue is empty.\r\n");
+				return -1;
+			}
+			return queue[back];
+		}
+
+		public int GetFront()
+		{
+			if (IsEmpty())
+			{
+				Console.WriteLine("Queue is empty.\r\n");
+				return -1;
+			}
+
+			return queue[front + 1];
+		}
+
+
+		public bool IsEmpty()
+		{
+			return front == back;
+		}
+		public bool IsFull()
+		{
+			return back + 1 == back;
+		}
+
+
+		public int getSize()
+		{
+			return back - front;
+		}
+
+		public int GetCapacity()
+		{
+			return capacity;
+
+		}
+		
 	}
 	
 
@@ -19,7 +115,7 @@ namespace DSAlgo.DS
 
 	}
 
-
+	//看一下 .NET 本身怎麼實作的
 	/// <summary>
 	/// http://www.cplusplus.com/reference/queue/queue/
 	/// https://www.tutorialspoint.com/cplusplus-program-to-implement-queue-using-array
