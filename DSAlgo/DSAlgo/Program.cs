@@ -16,7 +16,12 @@ namespace DSAlgo
 
 			//MyStack.main();
 
-			MyQueue.main();
+			//MyQueue.main();
+
+			MySequentialQueue.main();
+
+
+
 
 		}
 	}

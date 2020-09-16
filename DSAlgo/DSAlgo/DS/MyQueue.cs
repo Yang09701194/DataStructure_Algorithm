@@ -5,13 +5,11 @@ using System.Text;
 namespace DSAlgo.DS
 {
 
-
 	//http://alrightchiu.github.io/SecondRound/queue-yi-arrayshi-zuo-queue.html
 	class MySequentialQueue
 	{
 		int capacity, front, back;
 		int[] queue;
-
 
 		public MySequentialQueue()
 		{
@@ -21,39 +19,40 @@ namespace DSAlgo.DS
 			queue = new int[capacity];
 		}
 
-
 		public void DoubleCapacity()
 		{
 			capacity *= 2;
 			int[] newQueue = new int[capacity];
 			int j = - 1;
-			for (int i = front + 1; i <= back; i++, j++)
+			for (int i = front + 1; i <= back; i++)
 			{
+				j++;
 				newQueue[j] = queue[i];
 			}
 
 			front = -1; back = j;
 		}
 
-
-		public void printCircularQueue()
+		public void PrintSequentialQueue()
 		{
 			Console.WriteLine($"front:{GetFront()} back:{GetBack()} capacity:{GetCapacity()} ");
-
-
-
+			Console.WriteLine("---");
+			foreach (int i in queue)
+			{
+				Console.WriteLine(i);
+			}
 		}
 
 		public void Push(int i)
 		{
-			if (IsFull())
+			if (Full)
 				DoubleCapacity();
 			queue[++back] = i;
 		}
 
-		public void pop()
+		public void Pop()
 		{
-			if (IsEmpty())
+			if (Empty)
 			{
 				Console.WriteLine("Queue is Empty.\r\n");
 				return;
@@ -62,10 +61,9 @@ namespace DSAlgo.DS
 			front++;
 		}
 
-
 		public int GetBack()
 		{
-			if (IsEmpty())
+			if (Empty)
 			{
 				Console.WriteLine("Queue is empty.\r\n");
 				return -1;
@@ -75,27 +73,27 @@ namespace DSAlgo.DS
 
 		public int GetFront()
 		{
-			if (IsEmpty())
+			if (Empty)
 			{
 				Console.WriteLine("Queue is empty.\r\n");
 				return -1;
 			}
 
-			return queue[front + 1];
+			return queue[front + 1]; //這邊 +1 乍看有點奇特  但前面給 -1 -1 確實沒錯
 		}
 
 
-		public bool IsEmpty()
+		public bool Empty
 		{
-			return front == back;
+			get { return front == back; } 
 		}
-		public bool IsFull()
+
+		public bool Full
 		{
-			return back + 1 == back;
+			get { return back + 1 == capacity; }
 		}
 
-
-		public int getSize()
+		public int GetSize()
 		{
 			return back - front;
 		}
@@ -103,9 +101,52 @@ namespace DSAlgo.DS
 		public int GetCapacity()
 		{
 			return capacity;
+		}
+
+		public static void main()
+		{
+			MySequentialQueue q = new MySequentialQueue();
+			if(q.Empty)
+				Console.WriteLine("q is empty");
+			q.Push(24);
+			while (true)
+			{
+				Console.WriteLine(
+					@"1 push
+2 pop
+3 show
+4 exit");
+				int i;
+				do
+				{
+					Console.WriteLine("Enter your choice");
+					i = Convert.ToInt32(Console.ReadLine());
+					switch (i)
+					{
+						case 1:
+							Console.WriteLine("enter value");
+							i = Convert.ToInt32(Console.ReadLine());
+							q.Push(i);
+							break;
+						case 2:
+							q.Pop();
+							break;
+						case 3:
+							q.PrintSequentialQueue();
+							break;
+						case 4:
+							Console.WriteLine("exit");
+							break;
+						default:
+							Console.WriteLine("invalid choice");
+							break;
+					}
+				} while (i != 4);
+
+			}
 
 		}
-		
+
 	}
 	
 
