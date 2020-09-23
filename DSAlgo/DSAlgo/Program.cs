@@ -18,9 +18,9 @@ namespace DSAlgo
 
 			//MyQueue.main();
 
-			MySequentialQueue.main();
+			//MySequentialQueue.main();
 
-
+			MyCircularQueue.main();
 
 
 		}

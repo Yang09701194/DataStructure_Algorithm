@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace DSAlgo.DS
 {
 
 	//http://alrightchiu.github.io/SecondRound/queue-yi-arrayshi-zuo-queue.html
+	//   arr index 0 >> 先進來的 ----  後進來的
+	//                  pop >          push > 
 	class MySequentialQueue
 	{
 		int capacity, front, back;
@@ -30,16 +34,18 @@ namespace DSAlgo.DS
 				newQueue[j] = queue[i];
 			}
 
-			front = -1; back = j;
+			front = -1;
+			back = j;
+			queue = newQueue;
 		}
 
 		public void PrintSequentialQueue()
 		{
 			Console.WriteLine($"front:{GetFront()} back:{GetBack()} capacity:{GetCapacity()} ");
 			Console.WriteLine("---");
-			foreach (int i in queue)
+			for (int j = front + 1; j <= back; j++)
 			{
-				Console.WriteLine(i);
+				Console.WriteLine(queue[j]);
 			}
 		}
 
@@ -153,6 +159,157 @@ namespace DSAlgo.DS
 	//http://alrightchiu.github.io/SecondRound/queue-yi-arrayshi-zuo-queue.html
 	class MyCircularQueue
 	{
+		int capacity, front, back;
+		int[] queue;
+
+		public MyCircularQueue()
+		{
+			capacity = 5;
+			front = back = 0;
+			queue = new int[capacity];
+		}
+
+		public void DoubleCapacity()
+		{
+			capacity *= 2;
+			int[] newQueue = new int[capacity * 2];
+			int j = front, size = Size;
+			for (int i = 1; i <= size; i++)
+			{
+				newQueue[i] = queue[++j % capacity];//	因為 circular    //j 要先加一, 因為 front 沒有東西
+			}
+
+			back = Size;//	要在更改 capacity 之前抓住 back
+			front = 0;//	改變 front 要在 getSize() 之後
+
+			queue = newQueue;
+		}
+
+		public void Push(int value)
+		{
+			if (Full)
+				DoubleCapacity();
+			back = (back + 1) % capacity;
+
+			queue[back] = value;
+		}
+
+		public void Pop()
+		{
+			if (Empty)
+			{
+				Console.WriteLine("Queue is Empty.\r\n");
+				return;
+			}
+
+			front++;
+		}
+
+		public void PrintSequentialQueue()
+		{
+			Console.WriteLine($"front:{GetFront()} back:{GetBack()} capacity:{GetCapacity()} ");
+			Console.WriteLine("---");
+			for (int j = front + 1; j <= back; j++)
+			{
+				Console.WriteLine(queue[j]);
+			}
+		}
+
+
+
+		public int GetFront()
+		{
+			if (Empty)
+			{
+				Console.WriteLine("Queue is empty.\r\n");
+				return -1;
+			}
+
+			return queue[(front + 1) % capacity]; //這邊 +1 乍看有點奇特  但前面給 -1 -1 確實沒錯
+		}
+
+		public int GetBack()
+		{
+			if (Empty)
+			{
+				Console.WriteLine("Queue is empty.\r\n");
+				return -1;
+			}
+			return queue[back];
+		}
+
+
+		public bool Empty
+		{
+			get { return front == back; }
+		}
+
+		public bool Full
+		{
+			get { return front == (back + 1) % capacity; }
+		}
+
+		public int Size
+		{
+			get
+			{
+				if (front < back)
+					return back - front;
+				return capacity - (front - back);
+			}
+		}
+
+		public int GetCapacity()
+		{
+			return capacity;
+		}
+
+		public static void main()
+		{
+			MyCircularQueue q = new MyCircularQueue();
+			if(q.Empty)
+				Console.WriteLine("q is empty.");
+			q.Push(25);
+			while (true)
+			{
+				Console.WriteLine(
+@"1 push
+2 pop 
+3 show 
+4 exit");
+				int i;
+				do
+				{
+					Console.WriteLine("Enter your choice.");
+					i = Convert.ToInt32(Console.ReadLine());
+
+					switch (i)
+					{
+						case 1:
+							Console.WriteLine("enter value");
+							i = Convert.ToInt32(Console.ReadLine());
+							q.Push(i);
+							break;
+						case 2:
+							q.Pop();
+							break;
+						case 3:
+							q.PrintSequentialQueue();
+							break;
+						case 4:
+							Console.WriteLine("exit");
+							break;
+						default:
+							Console.WriteLine("invalid choice");
+							break;
+					}
+
+				} while (i != 4);
+
+			}
+
+		}
+
 
 	}
 
