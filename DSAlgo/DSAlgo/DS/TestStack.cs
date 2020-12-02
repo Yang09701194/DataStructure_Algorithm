@@ -8,6 +8,10 @@ namespace DSAlgo
 	{
 
 		//	https://www.tutorialsteacher.com/csharp/csharp-stack
+
+		// http://pages.cs.wisc.edu/~siff/CS367/Notes/stacks.html
+		// For all the standard stack operations (push, pop, isEmpty, size), the worst-case run-time complexity can be O(1). 
+		// 
 		public static void Test()
 		{ 
 			Stack<int> stack = new Stack<int>();

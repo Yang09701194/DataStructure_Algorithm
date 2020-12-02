@@ -7,7 +7,8 @@
 
 int main()
 {
-    
+	int a = 3, b = 5;
+	auto c = a < b ? a = b, 1 : 0;
 	PriorityQueueTest();
 
 	

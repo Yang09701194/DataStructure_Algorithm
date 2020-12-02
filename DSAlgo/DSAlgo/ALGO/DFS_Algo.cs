@@ -82,12 +82,12 @@ namespace DSAlgo.ALGO
 		private void DFS_Visit(int vertex, ref int time, Graph<int> graph)
 		{
 			color[vertex] = 1;	//	塗成灰色
-			discover[vertex] = ++time;
+			discover[vertex] = ++time;// 第幾個被發現的
 
 			var vertexAdjList = graph.AdjacencyList[vertex];
 			foreach (int adjV in vertexAdjList)
 			{
-				if (color[adjV] == 0)
+				if (color[adjV] == 0)//是白色的話
 				{
 					predecessor[adjV] = vertex;
 					DFS_Visit(adjV, ref time, graph);
