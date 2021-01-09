@@ -12,8 +12,10 @@ namespace DSAlgo
 	{
 		static void Main(string[] args)
 		{
-			Permutation.TEST();
-
+			DS_OperationSpeedTest.test();
+			
+			//Permutation.TEST();
+			
 			//DFS_Find_DAG_TopologicalSort.main();
 
 			//DFS_Find_StronglyConnectedComponent_SCC.main();
