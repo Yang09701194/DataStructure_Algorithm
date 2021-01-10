@@ -12,13 +12,6 @@ namespace DSAlgo.DS
 		public static void test()
 		{
 
-
-
-
-
-
-
-
 			//測  dic 的 Max   想太多了   就是 O n  沒錯  
 			//int[] testCases = new int[] { 300, 3000, 30000, 300000, 3000000, 30000000};
 
@@ -50,8 +43,6 @@ namespace DSAlgo.DS
 			//	Console.WriteLine(test.Keys.Max());
 			//	Console.WriteLine($"length {testCase} time {t.TimingMs()}");
 			//}
-
-
 
 		}
 
