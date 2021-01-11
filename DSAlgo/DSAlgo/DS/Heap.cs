@@ -41,13 +41,22 @@ namespace DSAlgo.DS
 	/// 跟倒數第一層 n/4 高度只有1
 	/// 高度 h 的點  有  n/2^(h+1) 
 	/// sigma 之後  再用等比公式    最後就得到 O n
-	/// 
+	///
+	/// 更精準地說  2/n 4/n 8/n 三層就 0.875 只需 高度3的heapify
+	/// 所以build 是 theta n   tight   這是因為從下面開始
+	///
+	/// 但是 heap sort  因為 delete 取掉   是持續由最上往下heapfiy  所以 o nlogn 
+	///  
 	/// 來自以下參考文章
 	/// 這邊相對重點簡化  好讀
 	/// https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/
+	/// 裡面的根據   更精準在 umd   有存在 DSAlgo\DS
+	/// http://www.cs.umd.edu/~meesh/351/mount/lectures/lect14-heapsort-analysis-part.pdf
+	///
 	/// 內容相同較詳細
 	/// https://stackoverflow.com/questions/9755721/how-can-building-a-heap-be-on-time-complexity
-	/// 
+	///
+	/// sift 篩
 	///
 	/// </summary>
 	class Heap
