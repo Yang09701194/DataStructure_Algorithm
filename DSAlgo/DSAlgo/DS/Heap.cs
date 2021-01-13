@@ -9,7 +9,7 @@ namespace DSAlgo.DS
 	/// <summary>
 	/// Heap
 	/// 堆積總是一棵完全樹。即除了最底層，其他層的節點都被元素填滿，且最底層儘可能地從左到右填入
-	///
+	/// 
 	/// 以下說明 Min Heap   Max只是大小相反  
 	/// 
 	/// insert/delete/balance o logn   
@@ -18,7 +18,7 @@ namespace DSAlgo.DS
 	/// 
 	/// delete  取出 top 把最右下的擺到 top 然後持續跟左右child比  有比任一大  跟最小的互換  繼續往下比
 	/// https://www.youtube.com/watch?v=uescHE7Rw9k
-	///
+	/// 
 	/// 
 	/// heapify  可以把一個無序數列轉換成heap
 	///
@@ -28,7 +28,7 @@ namespace DSAlgo.DS
 	/// http://notepad.yehyeh.net/Content/Algorithm/Sort/Heap/Heap.php
 	/// https://youtu.be/HqPJF2L5h9U?t=2795
 	/// 
-	///  
+	/// 
 	///  
 	/// Heap build 的 O 分析  實際上很複雜
 	/// How can building a heap be O(n) time complexity?

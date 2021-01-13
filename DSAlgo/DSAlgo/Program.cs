@@ -22,7 +22,7 @@ namespace DSAlgo
 
 			//int[] test = new[] {4, 7, 3, 8, 6, 9, 1};
 			//int[] test2 = new[] {1,2,3,4,5,6,7,8,9};
-			//Sort_QuickSort.QuickSort(test, 0, 6, test2 );
+			//Sort_QuickSort_Graph.QuickSort(test, 0, 6, test2 );
 
 			//DFS_Algo.main();
 
@@ -39,6 +39,8 @@ namespace DSAlgo
 			//MyCircularQueue.main();
 
 			//TestHashSet.Test();
+
+			QuickSort.Run();
 
 			Console.Read(); 
 
