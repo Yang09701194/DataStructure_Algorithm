@@ -38,10 +38,27 @@ namespace DSAlgo.ALGO
 	/// 
 	/// Is QuickSort In-place?
 	/// As per the broad definition of in-place algorithm it qualifies as an in-place sorting algorithm as it uses extra space only for storing recursive function calls but not for manipulating the input.
-	/// 
+	///
+	/// 3-way QuickSort  解決大量重複元素  造成 n^2的問題
+	/// a) arr[l..i] elements less than pivot.
+	///	b) arr[i + 1..j - 1] elements equal to pivot.
+	/// c) arr[j..r] elements greater than pivot.
+	/// 相同元素的區塊  整個可以直接忽略掉  大幅加速
+	/// 沒重複  best case nlogn
+	/// 有重複  越多重複越減低時間   best case O n  線性時間  linear
+	///  
+	///  
 	/// GG裡面寫得更多  厲害
 	///
 	/// 找到另一篇  就是用另外一種partition
+	/// https://www.w3resource.com/csharp-exercises/searching-and-sorting-algorithm/searching-and-sorting-algorithm-exercise-9.php
+	/// 他是從左右兩邊向中間  分別找 大於 小於 pivot的  是用while持續推進到找到
+	/// 然後左右swap
+	///
+	/// LC Sol 看到  Hoare's partition fails with duplicates, Lomuto's doesn't
+	/// YT 看了幾部才找到   這部很詳細
+	/// https://www.youtube.com/watch?v=v-1EGgaTFuw&t=633s
+	/// 
 	/// 
 	/// </summary>
 	class QuickSort

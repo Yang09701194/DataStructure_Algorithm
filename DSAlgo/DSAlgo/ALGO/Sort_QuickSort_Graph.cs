@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DSAlgo.ALGO
 {
-	class Sort_QuickSort
+	class Sort_QuickSort_Graph
 	{
 
 		/// <summary>
@@ -19,7 +19,7 @@ namespace DSAlgo.ALGO
 		///	finishLargetoSmall[i] = i;
 		/// }
 		/// QuickSort()會更新 finishLargetoSmall[] 成 finish[] 由大至小的vertex順序
-		/// Sort_QuickSort.QuickSort(dfs.finish, 0, num_vertex - 1, finishLargetoSmall);
+		/// Sort_QuickSort_Graph.QuickSort(dfs.finish, 0, num_vertex - 1, finishLargetoSmall);
 		/// </summary>
 		/// <param name="vec"></param>
 		/// <param name="front"></param>
