@@ -40,7 +40,7 @@ namespace DSAlgo
 
 			//TestHashSet.Test();
 
-			QuickSort.Run();
+			QuickSort_Lomuto.Run();
 
 			Console.Read(); 
 

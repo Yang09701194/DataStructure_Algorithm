@@ -58,10 +58,31 @@ namespace DSAlgo.ALGO
 	/// LC Sol 看到  Hoare's partition fails with duplicates, Lomuto's doesn't
 	/// YT 看了幾部才找到   這部很詳細
 	/// https://www.youtube.com/watch?v=v-1EGgaTFuw&t=633s
+	/// 直接說明了   QuickSort的  兩種 partition 方法   Lomuto's Partition   /   Hoare's  Partition
+	///
+	/// QuickSort 的精神是   選定一個 pivot  然後將元素分為左小群 右大群
+	/// 實際partition做法就可以分成  設pivot選最右
+	/// Lomuto : 從最左一直掃到最右  發現比pivot小的  就和最左邊比pivot大的值交換  掃完之後 pivot放到中間  
+	/// Hoare : 左右各往中間 用while持續找到   左邊大  右邊小的  交換
+	///
+	///
+	/// QSort遇到WorstCase時  一般做法會產生 n 層 call stack 遞迴 
+	/// 可以透過一個巧妙的方法 Tail Call Optimization / Optimize Tail Recurssion
+	/// 詳細可以見
+	/// https://www.geeksforgeeks.org/quicksort-tail-call-optimization-reducing-worst-case-space-log-n/
+	/// http://www.cs.nthu.edu.tw/~wkhon/algo08-tutorials/tutorial2b.pdf
+	/// 核心關鍵是  原本是  partion完後  就固定對左右兩個下去QSort
+	///
+	/// 優化版本是 外層是用while  所以是迴圈效果  減少遞迴
+	/// # low high partition 左右分完之後  對比較小的 partition 去 QSort   做完之後
+	/// 如果是做左邊   就更新 low = pi + 1;   反之   high = pi - 1;
+	///
+	/// 然後繼續跑 #   因為小的一下子就做完  所以遞迴清空回到第一層  所以可以減少 stack 的深度
 	/// 
+	/// log model
 	/// 
 	/// </summary>
-	class QuickSort
+	class QuickSort_Lomuto
 	{
 		/* This function takes last element as pivot, 
 	places the pivot element at its correct 
