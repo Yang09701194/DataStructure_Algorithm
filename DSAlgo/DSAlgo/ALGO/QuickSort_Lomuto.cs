@@ -67,7 +67,7 @@ namespace DSAlgo.ALGO
 	///
 	///
 	/// QSort遇到WorstCase時  一般做法會產生 n 層 call stack 遞迴 
-	/// 可以透過一個巧妙的方法 Tail Call Optimization / Optimize Tail Recurssion
+	/// 可以透過一個巧妙的方法 Tail Call Optimization / Optimize Tail Recursion
 	/// 詳細可以見
 	/// https://www.geeksforgeeks.org/quicksort-tail-call-optimization-reducing-worst-case-space-log-n/
 	/// http://www.cs.nthu.edu.tw/~wkhon/algo08-tutorials/tutorial2b.pdf
@@ -79,7 +79,19 @@ namespace DSAlgo.ALGO
 	///
 	/// 然後繼續跑 #   因為小的一下子就做完  所以遞迴清空回到第一層  所以可以減少 stack 的深度
 	/// 
-	/// log model
+	/// 影片很有趣還有  uniform cost model     logarithmic cost model  的分析
+	///
+	/// https://cs.stackexchange.com/questions/11458/quicksort-partitioning-hoare-vs-lomuto
+	/// 這邊又有說到 cormen 本有寫
+	///
+	/// 這篇也很清楚的寫到影片的幾個點
+	/// 
+	/// 大量duplicate > Lomuto比較笨拙  n^2    因為part的時候  無法明確分成左小右大 值都一樣  所以幾乎又是 n n-1 n-2在跑
+	///
+	/// random distinct valueas :  Hoare 只需要 n/6 swaps    Lomuto n/2 swap
+	///
+	/// 還有一個更優化的方式   在partition被分到很小的時候 改成用  Insertion Sort
+	/// insertion Sort 在 幾乎排序好的小陣列的表現  比 Quick 快很多  因為可以直接跳過排序正確的部分
 	/// 
 	/// </summary>
 	class QuickSort_Lomuto
