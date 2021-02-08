@@ -14,7 +14,7 @@ namespace DSAlgo.ALGO
 	///
 	/// 由以上說明可以觀察出，DFS()本質上是一種「遞迴(recursion)結構」，而遞迴結構其實是利用了系統的「堆疊(stack)」，因此，這兩種方式皆能實現DFS()，以下提供的範例程式碼將以遞迴形式完成。
 	/// </summary>
-	class DFS_Algo
+	public class DFS_Algo
 	{
 		//  他這邊有點有趣   他又另外寫了一個Graph 跟 BFS 類似  但是資料結構不是Dic + HashSet 而是 vector + List 都C++   可能只是單純換一下而已  練個手感吧
 
@@ -24,6 +24,8 @@ namespace DSAlgo.ALGO
 		public int[] color, discover, finish, predecessor;
 		private Graph<int> _graph;
 
+		private Stack<int> dfsProcessStack = new Stack<int>();
+		private int maxDfsPathLen = 0;
 		public void DFS(int start, Graph<int>  graph)
 		{
 			_graph = graph;
@@ -32,6 +34,8 @@ namespace DSAlgo.ALGO
 			discover = new int[verticesCou];
 			finish = new int[verticesCou];
 			predecessor = new int[verticesCou];
+			maxDfsPathLen = 0;
+			dfsProcessStack.Clear();
 
 			for (int j = 0; j < predecessor.Length; j++)
 			{
@@ -50,8 +54,6 @@ namespace DSAlgo.ALGO
 			}
 
 		}
-
-
 
 		public void DFS_WithOrder(int start, Graph<int> graph, int[] vertexOrder)
 		{
@@ -83,6 +85,8 @@ namespace DSAlgo.ALGO
 		{
 			color[vertex] = 1;	//	塗成灰色
 			discover[vertex] = ++time;// 第幾個被發現的
+			dfsProcessStack.Push(vertex);
+			maxDfsPathLen = Math.Max(maxDfsPathLen, dfsProcessStack.Count);
 
 			var vertexAdjList = graph.AdjacencyList[vertex];
 			foreach (int adjV in vertexAdjList)
@@ -96,9 +100,14 @@ namespace DSAlgo.ALGO
 
 			color[vertex] = 2;//  塗成黑色
 			finish[vertex] = ++time;//這樣子寫起來感覺就跟 leetcode 有點像  就是說想的時候是很複雜的  實現起來的程式碼相對簡單許多  簡單的程式碼就可以形成複雜的流程
+			dfsProcessStack.Pop();
 
 		}
 
+		public int GetMaxDfsPathLen()
+		{
+			return maxDfsPathLen;
+		}
 
 		public void SetCollapsing()
 		{
@@ -109,7 +118,6 @@ namespace DSAlgo.ALGO
 		{
 			return predecessor[i];
 		}
-
 
 		public void PrintInfo()
 		{
@@ -160,6 +168,32 @@ namespace DSAlgo.ALGO
 		//透過顏色判斷edge：當vertex(X)搜尋到vertex(Y)時，vertex(Y)為「黑色」，並且discover[X]<discover[Y]，edge(X, Y)即為Forward edge。
 		//Cross edge：若兩個vertex不在同一棵Depth-First Tree上，例如vertex(C)與vertex(H)，或者兩個vertex在同一棵Depth-First Tree上卻沒有「ancestor-descendant」的關係，例如vertex(C)與vertex(F)，則稱連結此兩個vertex的edge為Cross edge。
 		//透過顏色判斷edge：當vertex(X)搜尋到vertex(Y)時，vertex(Y)為「黑色」，並且discover[X]>discover[Y]，edge(X, Y)即為Cross edge。
+
+
+
+		// 
+		// Applications of Depth First Search
+		// https://www.geeksforgeeks.org/applications-of-depth-first-search/
+		// 1) For a weighted graph, DFS traversal of the graph produces the minimum spanning tree and all pair shortest path tree.
+		// 2) Detecting cycle in a graph
+		// 3) Path Finding
+		// We can specialize the DFS algorithm to find a path between two given vertices u and z.
+		// 4) Topological Sorting
+		// 5) To test if a graph is bipartite
+		// 6) Finding Strongly Connected Components of a graph 
+		// 7) Solving puzzles with only one solution, such as mazes. 
+		// 
+
+
+		// Difference between BFS and DFS
+		// Sr. No.	Key	BFS	DFS
+		// 1	Definition	BFS, stands for Breadth First Search.	DFS, stands for Depth First Search.
+		// 2	Data structure	BFS uses Queue to find the shortest path.	DFS uses Stack to find the shortest path.
+		// 3	Source	BFS is better when target is closer to Source.	DFS is better when target is far from source.
+		// 4	Suitablity for decision tree	As BFS considers all neighbour so it is not suitable for decision tree used in puzzle games.	DFS is more suitable for decision tree. As with one decision, we need to traverse further to augment the decision. If we reach the conclusion, we won.
+		// 5	Speed	BFS is slower than DFS.	DFS is faster than BFS.
+		// 6	Time Complexity	Time Complexity of BFS = O(V+E) where V is vertices and E is edges.	Time Complexity of DFS is also O(V+E) where V is vertices and E is edges.
+
 
 
 	}

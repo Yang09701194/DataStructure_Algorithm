@@ -8,10 +8,10 @@ namespace DSAlgo.DS
 	{
 		public Graph() { }
 
-		private IEnumerable<T> _vertices;
-		private IEnumerable<Tuple<T, T>> _edges; 
+		private IList<T> _vertices;
+		private IList<Tuple<T, T>> _edges; 
 
-		public Graph(IEnumerable<T> vertices, IEnumerable<Tuple<T, T>> edges, GraphOption option)
+		public Graph(IList<T> vertices, IList<Tuple<T, T>> edges, GraphOption option)
 		{
 			_vertices = vertices;
 			_edges = edges;

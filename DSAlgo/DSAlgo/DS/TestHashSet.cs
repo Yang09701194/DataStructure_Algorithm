@@ -4,6 +4,14 @@ using System.Text;
 
 namespace DSAlgo.DS
 {
+
+	/// <summary>
+	///
+	/// Time Complexity of HashSet Operations: The underlying data structure for HashSet is hashtable. So amortize (average or usual case) time complexity for
+	/// add, remove and look-up (contains method) operation of HashSet takes O(1) time.
+	///
+	/// 
+	/// </summary>
 	class TestHashSet
 	{
 
@@ -11,6 +19,11 @@ namespace DSAlgo.DS
 		{
 			HashSet<int> evenNumbers = new HashSet<int>();
 			HashSet<int> oddNumbers = new HashSet<int>();
+
+			var b = evenNumbers.Add(2);
+			b = evenNumbers.Add(2);
+			b = evenNumbers.Add(2);
+
 
 			for (int i = 0; i < 5; i++)
 			{

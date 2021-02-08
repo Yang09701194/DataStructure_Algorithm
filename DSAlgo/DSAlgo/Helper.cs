@@ -9,13 +9,13 @@ namespace DSAlgo
 	public static class Helper
 	{
 
+
 		public static void Print<T>(this IList<T> ls, string msg = "")
 		{
 			if (!string.IsNullOrEmpty(msg))
 				Console.WriteLine(msg);
 			Console.WriteLine(String.Join(" ", ls));
 		}
-
 
 
 		/// <summary>
@@ -71,6 +71,6 @@ namespace DSAlgo
 
 		}
 
-
 	}
+
 }

@@ -12,10 +12,12 @@ namespace DSAlgo
 	{
 		static void Main(string[] args)
 		{
-			DS_OperationSpeedTest.test();
-			
+			//DS_OperationSpeedTest.test();
+
 			//Permutation.TEST();
-			
+
+			//DFS_Algo_Stack.main();
+
 			//DFS_Find_DAG_TopologicalSort.main();
 
 			//DFS_Find_StronglyConnectedComponent_SCC.main();
@@ -24,7 +26,9 @@ namespace DSAlgo
 			//int[] test2 = new[] {1,2,3,4,5,6,7,8,9};
 			//Sort_QuickSort_Graph.QuickSort(test, 0, 6, test2 );
 
-			//DFS_Algo.main();
+			DFS_Algo.main();
+
+			//DFS_Find_StronglyConnectedComponent_SCC.main();
 
 			//BFS_Algo.main();	
 
@@ -40,10 +44,11 @@ namespace DSAlgo
 
 			//TestHashSet.Test();
 
-			QuickSort_Lomuto.Run();
+			//QuickSort_Lomuto.Run();
 
 			Console.Read(); 
 
 		}
 	}
 }
+

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 using DSAlgo.DS;
 
@@ -171,5 +170,25 @@ namespace DSAlgo.ALGO
 		//  但是只是在BFS 多傳入一個Action  可以外部決定當訪問到一個點時  要加上什麼動作
 		//  這只是一般改寫    和Algo本身沒關係   所以我就不放  需要可以去看
 
+		// BFS (Breadth First Search) is also used in different situations. These are like below −
+		// 
+		// In peer-to-peer network like bit-torrent, BFS is used to find all neighbor nodes
+		// Search engine crawlers are used BFS to build index. Starting from source page, it finds all links in it to get new pages
+		// Using GPS navigation system BFS is used to find neighboring places.
+		// In networking, when we want to broadcast some packets, we use the BFS algorithm.
+		// Path finding algorithm is based on BFS or DFS.
+		// BFS is used in Ford-Fulkerson algorithm to find maximum flow in a network.
+
+		// Difference between BFS and DFS
+		// Sr. No.	Key	BFS	DFS
+		// 1	Definition	BFS, stands for Breadth First Search.	DFS, stands for Depth First Search.
+		// 2	Data structure	BFS uses Queue to find the shortest path.	DFS uses Stack to find the shortest path.
+		// 3	Source	BFS is better when target is closer to Source.	DFS is better when target is far from source.
+		// 4	Suitablity for decision tree	As BFS considers all neighbour so it is not suitable for decision tree used in puzzle games.	DFS is more suitable for decision tree. As with one decision, we need to traverse further to augment the decision. If we reach the conclusion, we won.
+		// 5	Speed	BFS is slower than DFS.	DFS is faster than BFS.
+		// 6	Time Complexity	Time Complexity of BFS = O(V+E) where V is vertices and E is edges.	Time Complexity of DFS is also O(V+E) where V is vertices and E is edges.
+
+
 	}
+
 }
